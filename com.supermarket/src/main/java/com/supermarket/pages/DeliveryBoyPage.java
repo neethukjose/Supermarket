@@ -50,7 +50,6 @@ public class DeliveryBoyPage {
 	public void navigateDeliveryBoyPage() {
 		pageutility = new PageUtility(driver);
 		pageutility.scroll_And_Click(deliveryboytab);
-
 	}
 	
 	public boolean createNewDeliveryBoy(String name, String emailid,String phoneNo, String userName,String password) {
