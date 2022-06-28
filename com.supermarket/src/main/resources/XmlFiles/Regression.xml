@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Release 1.0" >
+
+	<test name="smoke">
+		<classes>
+			<class name="com.supermarket." >
+			<methods>
+			<include name=""></include>
+			</methods>
+			</class>
+			
+            
+           
+			
+		</classes>
+		</test>
+		
+		<test name="regression">
+		<classes>
+			
+            
+             <class name="testcases.ToolTip" ></class>
+           
+			
+		</classes>
+		</test>
+	
+</suite> <!-- Suite -->

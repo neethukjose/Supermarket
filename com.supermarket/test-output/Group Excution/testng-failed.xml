@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Group Excution]">
+  <listeners>
+    <listener class-name="com.supermarket.listners.ExtentReporter"/>
+  </listeners>
+  <test thread-count="5" name="Relese1.2(failed)">
+    <groups>
+      <run>
+        <include name="smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.supermarket.tests.DeliveryBoyTest">
+        <methods>
+          <include name="validateDeliveryBoyCreate" invocation-numbers="0 1"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.supermarket.tests.DeliveryBoyTest -->
+    </classes>
+  </test> <!-- Relese1.2(failed) -->
+</suite> <!-- Failed suite [Group Excution] -->

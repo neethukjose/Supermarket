@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Parallel Excution]" parallel="tests">
+  <listeners>
+    <listener class-name="com.supermarket.listners.ExtentReporter"/>
+  </listeners>
+  <test thread-count="3" name="regression(failed)" parallel="tests">
+    <classes>
+      <class name="com.supermarket.tests.DashboardTest">
+        <methods>
+          <include name="valiidateDashboardTiles"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="setUpCrossBrowser"/>
+        </methods>
+      </class> <!-- com.supermarket.tests.DashboardTest -->
+    </classes>
+  </test> <!-- regression(failed) -->
+</suite> <!-- Failed suite [Parallel Excution] -->

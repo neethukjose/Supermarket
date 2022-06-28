@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel Excution" thread-count="3" parallel="tests">
+	<listeners>
+		<listener class-name="com.supermarket.listners.ExtentReporter"></listener>
+	</listeners>
+	<test name="smoke">
+		<classes>
+			<!-- <class name="com.supermarket.tests.LoginTest"></class> -->
+
+		</classes>
+	</test>
+
+	<test name="regression">
+		<classes>
+
+			<class name="com.supermarket.tests.DashboardTest"></class>
+
+
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->
