@@ -53,17 +53,22 @@ public class GeneralUtilities {
 	public boolean  isgetAttributeValuePresent(WebElement element,String attribute,String expectedvalue) {
 		return element.getAttribute(attribute).contains(expectedvalue);
 	}
-	public String  getCSSSelectorValue(WebElement element,String property) {
+	public String getCSSSelectorValue(WebElement element,String property) {
 		return element.getCssValue(property);
 	}
 	
-	//css boolean
+    public boolean isgetCSSValuePresent(WebElement element,String attribute,String expectedvalue) {
+		return element.getCssValue(attribute).contains(expectedvalue);
+	}
 	public String  getToolTipValue(WebElement element,String attribute) {
 		return element.getAttribute("title");
 	}
 	
-	//get title
-	//get current url
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
 	
-	
+	public String getcurrentUrl() {
+		return driver.getCurrentUrl();
+	}
 }

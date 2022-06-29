@@ -43,6 +43,12 @@ public class DashboardTest extends BaseClass {
 		responsecode= new ResponseCodeGetter();
 		int response=responsecode.getResponseCode(url);
 		System.out.println(response);
+		if(response>400) {
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
 	}
 
 }
