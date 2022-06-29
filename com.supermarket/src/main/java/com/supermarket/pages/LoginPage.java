@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
+import com.supermarket.utilities.PageUtility;
 import com.supermarket.utilities.PropHandler;
 import com.supermarket.utilities.WaitUtility;
 
@@ -16,6 +17,7 @@ public class LoginPage {
 	PropHandler prop = new PropHandler();
 	GeneralUtilities generalutility;
 	WaitUtility waitutil;
+	PageUtility pageutility;
 
 	@FindBy(xpath = "//input[@name='username']")
 	@CacheLookup
@@ -36,6 +38,10 @@ public class LoginPage {
 	private WebElement rememberCheckboxselected;
 	@FindBy(xpath = "//a[contains(text(),'Admin')]")
 	private WebElement userImage;
+	@FindBy(xpath = "//li[@class='nav-item dropdown']")
+	private WebElement settings;
+	@FindBy(xpath = "//div[@class='dropdown-menu dropdown-menu-lg dropdown-menu-right text_black show']//a[2]")
+	private WebElement logout;
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -94,8 +100,15 @@ public class LoginPage {
 	
 	public boolean login_Successfull_Validation(String expectedText) {
 		generalutility = new GeneralUtilities(driver);
-		
-		return generalutility.isExpectedTextPresent(userImage, expectedText);
-		
+		return generalutility.isExpectedTextPresent(userImage, expectedText);	
+	}
+	
+	public String logOutVerification() {
+		pageutility= new PageUtility(driver);
+		settings.click();
+		pageutility.moveToElementUtil(logout);
+		logout.click();
+		generalutility = new GeneralUtilities(driver);
+		return generalutility.get_CurrentUrl();
 	}
 }

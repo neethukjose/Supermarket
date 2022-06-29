@@ -1,26 +1,20 @@
 package com.supermarket.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Test;
 
 import com.supermarket.base.BaseClass;
-import com.supermarket.pages.DashboardPage;
+
 import com.supermarket.pages.LoginPage;
 import com.supermarket.utilities.DataProviders;
 import com.supermarket.utilities.ExcelUtility;
-import com.supermarket.utilities.GeneralUtilities;
-import com.supermarket.utilities.ScreenShot;
-
-
 
 public class LoginTest extends BaseClass {
 
 	LoginPage loginpage;
 
-	@Test(priority = 1,groups="smoke")
+	@Test(priority = 1, groups = "smoke")
 	public void verifyValidLogin() {
 
 		loginpage = new LoginPage(driver);
@@ -30,7 +24,7 @@ public class LoginTest extends BaseClass {
 		Assert.assertTrue(status);
 	}
 
-	@Test(groups="regression")
+	@Test(groups = "regression")
 	public void verifyLoginInfoMessage() {
 		loginpage = new LoginPage(driver);
 		String expectedInfoMessage = "Sign in to start your session";
@@ -38,7 +32,7 @@ public class LoginTest extends BaseClass {
 		Assert.assertTrue(status);
 	}
 
-	@Test(groups="regression")
+	@Test(groups = "regression")
 	public void verifyInvalidUsername() {
 		loginpage = new LoginPage(driver);
 		loginpage.loginUtility("abc", "admin");
@@ -47,14 +41,14 @@ public class LoginTest extends BaseClass {
 		Assert.assertTrue(status);
 	}
 
-	@Test(groups="regression")
+	@Test(groups = "regression")
 	public void verifyRemembermeisDisplayed() {
 		loginpage = new LoginPage(driver);
 		boolean status = loginpage.isRemember_Meisdisplayed();
 		Assert.assertTrue(status);
 	}
 
-	@Test(groups= {"smoke","regression"})
+	@Test(groups = { "smoke", "regression" })
 	public void verifyRemembermeisSelected() {
 		loginpage = new LoginPage(driver);
 		boolean status = loginpage.isRemember_meIsSelected();
@@ -74,9 +68,8 @@ public class LoginTest extends BaseClass {
 		}
 	}
 
-	@Test(dataProvider="loginCredentials",dataProviderClass=DataProviders.class,groups="regression")
-    public void verifyInvalidLoginExcelandDataprovider(String username1,String password1) {
-
+	@Test(dataProvider = "loginCredentials", dataProviderClass = DataProviders.class, groups = "regression")
+	public void verifyInvalidLoginExcelandDataprovider(String username1, String password1) {
 		loginpage = new LoginPage(driver);
 		loginpage.loginUtility(username1, password1);
 		String expectedErrorMessage = "Invalid Username/Password";
@@ -85,9 +78,8 @@ public class LoginTest extends BaseClass {
 
 	}
 
-	@Test(dataProvider="invalidLogin",dataProviderClass=DataProviders.class,groups="smoke")
-    public void verifyInvalidLoginDataProvider(String username,String password) {
-
+	@Test(dataProvider = "invalidLogin", dataProviderClass = DataProviders.class, groups = "smoke")
+	public void verifyInvalidLoginDataProvider(String username, String password) {
 		loginpage = new LoginPage(driver);
 		loginpage.loginUtility(username, password);
 		String expectedErrorMessage = "Invalid Username/Password";
@@ -95,6 +87,14 @@ public class LoginTest extends BaseClass {
 		Assert.assertTrue(status);
 
 	}
-	
-	
+
+	@Test(groups = "smoke")
+	public void validateLogout() {
+		loginpage = new LoginPage(driver);
+		loginpage.loginUtility();
+		String expectedurl = "https://project.phpwebsites.in/grocery2/admin/login";
+		String actualurl = loginpage.logOutVerification();
+		Assert.assertEquals(actualurl, expectedurl);
+	}
+
 }
