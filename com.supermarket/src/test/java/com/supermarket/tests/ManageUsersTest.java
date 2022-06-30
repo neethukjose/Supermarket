@@ -43,9 +43,9 @@ public class ManageUsersTest extends BaseClass {
 		manageuserspage = new ManageUsersPage(driver);
 		loginpage= new LoginPage(driver);
 		loginpage.loginUtility();
-		manageuserspage.clickOnDeactivateButton("sumesh");
-		
-		
+		String expectedstatus="Inactive";
+		String actualstatus=manageuserspage.clickOnDeactivateButton("sumesh");
+		Assert.assertEquals(actualstatus, expectedstatus);
 	}
 	
 }

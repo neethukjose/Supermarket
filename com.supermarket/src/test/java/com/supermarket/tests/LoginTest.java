@@ -55,7 +55,7 @@ public class LoginTest extends BaseClass {
 		Assert.assertTrue(status);
 	}
 
-	@Test
+	@Test(priority=6)
 	public void excelTest() {
 		ExcelUtility excel = new ExcelUtility();
 		excel.setExcelFile("UserDetails", "User");
@@ -89,7 +89,7 @@ public class LoginTest extends BaseClass {
 	}
 
 	@Test(groups = "smoke")
-	public void validateLogout() {
+	public void verifyLogoutFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.loginUtility();
 		String expectedurl = "https://project.phpwebsites.in/grocery2/admin/login";

@@ -85,7 +85,7 @@ public class ManageUsersPage {
 		return generalutility.isExpectedTextPresent(alertText, expectedMessage);
 	}
 
-	public void clickOnDeactivateButton(String username) {
+	public String clickOnDeactivateButton(String username) {
 		List<String> names = new ArrayList<String>();
 		pageutility = new PageUtility(driver);
 		generalutility = new GeneralUtilities(driver);
@@ -100,5 +100,8 @@ public class ManageUsersPage {
 		}
 		WebElement deactivateButton = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[6]//a[1]"));
 		pageutility.scroll_And_Click(deactivateButton);
+		WebElement inactivebutton = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[5]//a//span"));
+		return  inactivebutton.getText();
+		
 	}
 }
